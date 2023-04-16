@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "inherit_odoo",
+    'name': "Odoo Inheritance",
 
     'summary': """
         Odoo Inheritance""",
