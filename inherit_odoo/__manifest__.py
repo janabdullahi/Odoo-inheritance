@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "inherit_odoo",
+    'name': "Odoo Inheritance",
 
     'summary': """
         Odoo Inheritance""",
@@ -14,10 +14,10 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base'],
+    'depends': ['base', 'sale'],
 
     'data': [
-        'security/ir.model.access.csv',
+        # 'security/ir.model.access.csv',
         'views/views.xml',
     ],
     
