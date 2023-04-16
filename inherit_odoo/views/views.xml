@@ -1,9 +1,33 @@
 <odoo>
   <data>
-   
-        <record id="sale.menu_sale_quotations" model="ir.ui.menu">
-            <field name="name">New quotation</field>
-        </record>
+    <!-- [inheritance] : Quotation menu item in sale changed to New quotation -->
+    <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+      <field name="name">New quotation</field>
+    </record>
+
+    <!-- [inheritance] : Required Fields -->
+    <record id="view_sale_order_form_inherit" model="ir.ui.view">
+      <field name="name">sale.order.inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <field name="validity_date" position="attributes">
+          <attribute name="required">1</attribute>
+        </field>
+      </field>
+    </record>
+
+    <!-- [inheritance] : Readonly Fields -->
+    <record id="view_sale_order1_form_inherit" model="ir.ui.view">
+      <field name="name">sale.order.inherit</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <field name="date_order" position="attributes">
+          <attribute name="readonly">1</attribute>
+        </field>
+      </field>
+    </record>
 
   </data>
 </odoo>
