@@ -1,5 +1,6 @@
 <odoo>
   <data>
+
     <!-- [inheritance] : Quotation menu item in sale changed to New quotation -->
     <record id="sale.menu_sale_quotations" model="ir.ui.menu">
       <field name="name">New quotation</field>
@@ -28,6 +29,10 @@
         </field>
       </field>
     </record>
+   
+        <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+            <field name="name">New quotation</field>
+        </record>
 
   </data>
 </odoo>
