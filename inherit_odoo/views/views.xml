@@ -44,5 +44,17 @@
       <field name="demoain">[()]</field> -->
     </record>
 
+    <!-- [inheritance] : Adding New Field -->
+    <record id="sale_order_inherit_field" model="ir.ui.view">
+      <field name="name">sale.order.inherit.field</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <field name="partner_id" position="after">
+          <field name="name"></field>
+        </field>
+      </field>
+    </record>
+
   </data>
 </odoo>
