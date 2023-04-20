@@ -11,6 +11,9 @@ class SaleOrderInheriting(models.Model):
     # or we can id it using xpath [inheritance] : Adding New Field 
     comfired_user_id = fields.Many2one('res.users', string='Confirmed user')
 
+    def button_action(self):
+        return
+
 class ResPratnerInheriting(models.Model):
     _inherit = 'res.partner'
 
