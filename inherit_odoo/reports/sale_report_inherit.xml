@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="sale_report_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//div[@class='row mt32 mb32']" position="after">
+            <div class="col-auto col-3 mw-100 mb-2" id="client_order_ref_custimization">
+                <div class="col-auto col-3 mw-100 mb-2">
+                    <strong>Customization Reference:</strong>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@class='row mt32 mb32']" position="replace">
+            <div t-if="doc.date_order and doc.state not in ['draft','sent']" class="col-auto col-3 mw-100 mb-2">
+                <strong> Date:</strong>
+                <p class="m-0" t-field="doc.date_order"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//th[@name='th_description']" position="replace">
+            <th name="th_description" class="text-left">th description</th>
+        </xpath>
+
+        <xpath expr="//th[@name='th_quantity']" position="replace">
+            <th name="th_quantity" class="text-left">th quantity</th>
+        </xpath>
+
+    </template>
+
+</odoo>
