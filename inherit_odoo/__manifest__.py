@@ -19,6 +19,7 @@
     'data': [
         # 'security/ir.model.access.csv',
         'views/views.xml',
+        'reports/sale_report_inherit.xml',
     ],
     
 }
