@@ -22,3 +22,9 @@ class ResPratnerInheriting(models.Model):
 
     #[inheritance] : Addding selection field
     company_type = fields.Selection(selection_add=[('walk_in', 'Walk In')])
+
+class OdooInheritance(models.Model):
+    _name = 'odoo.inheritance'
+    _description = 'Odoo Inheritance'
+
+    name = fields.Char()
