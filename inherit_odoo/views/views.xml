@@ -93,7 +93,7 @@
       <field name="arch" type="xml">
         <xpath expr="//div[@name='button_box']" position="inside">
           <button name="button_action" type="object" class="oe_stat_button" icon="fa-regular fa-paperclip" string="Attachments">
-        </button>
+          </button>
         </xpath>
       </field>
     </record>
@@ -108,6 +108,37 @@
         </field>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="odoo_inheritance_tree_view">
+      <field name="name">Odoo Inheritance Tree</field>
+      <field name="model">odoo.inheritance</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record model="ir.ui.view" id="odoo_inheritance_form_view">
+      <field name="name">Odoo Inheritance Form</field>
+      <field name="model">odoo.inheritance</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+        </tree>
+      </field>
+    </record>
+
+    <record id="odoo_action_view" model="ir.actions.act_window">
+      <field name="name">Odoo Inheritance</field>
+      <field name="res_model">odoo.inheritance</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="odoo_inheritance" name="Odoo Inheritance" action="odoo_action_view" />
+
+    <!-- Wizard Menu-->
+    <menuitem id="odoo_wizard" name="Wizard" action="test_wizard" parent="odoo_inheritance"/>
 
 
   </data>

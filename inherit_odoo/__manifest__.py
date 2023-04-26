@@ -17,7 +17,8 @@
     'depends': ['base', 'sale'],
 
     'data': [
-        # 'security/ir.model.access.csv',
+        'security/ir.model.access.csv',
+        'wizards/wizard_view.xml',
         'views/views.xml',
         'reports/sale_report_inherit.xml',
     ],

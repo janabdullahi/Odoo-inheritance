@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Wizard Form View -->
+    <record id="view_wizard_practice" model="ir.ui.view">
+        <field name="name">wizard.form</field>
+        <field name="model">wizard.practice</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="name"></field>
+                </group>
+                <footer>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Wizard Action -->
+    <record model="ir.actions.act_window" id="test_wizard">
+        <field name="name">Practicing Wizard</field>
+        <field name="res_model">wizard.practice</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_id" ref="view_wizard_practice"></field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
