@@ -28,11 +28,12 @@ class OdooInheritance(models.Model):
     _description = 'Odoo Inheritance'
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    name = fields.Char(required=True, readonly=True, states={'draft': [('readonly', False)]})
+    employee_id = fields.Many2one('hr.employee', string="Employee Name", required=True, readonly=True, states={'draft': [('readonly', False)]})
     last_name = fields.Char(string="Last Name", readonly=True, states={'draft': [('readonly', False)]})
     phone = fields.Char(readonly=True, states={'draft': [('readonly', False)]})
     company_id = fields.Many2one('res.company', string='Company', required=True, readonly=True, default=lambda self: self.env.company)
-
+    department_id = fields.Many2one('hr.department', string='Department', related='employee_id.department_id',store=True)
+    
     state = fields.Selection([
         ('draft', 'Draft'),
         ('executive_director', 'Executive Director'),
