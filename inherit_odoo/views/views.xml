@@ -125,7 +125,11 @@
       <field name="arch" type="xml">
         <form>
           <header>
-            <button name="button_action1" type="object" string="Confirm"/>
+            <button name="set_as_draft" string="Set as draft" type="object" states="executive_director,approve"/>
+            <button name="director_approver" string="Executive Approve" type="object" states="draft"/>
+            <button name="final_approver" string="Final Approve" type="object" states="executive_director"/>
+            <button name="cancel" string="Cancel" type="object" class="oe_highlight" states="approve,executive_director"/>
+            <field name="state" widget="statusbar" statusbar_visible="draft,approve,executive_director,cancel"/>
           </header>
           <sheet>
             <group>
