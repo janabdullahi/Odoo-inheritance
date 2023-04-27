@@ -26,6 +26,7 @@ class ResPratnerInheriting(models.Model):
 class OdooInheritance(models.Model):
     _name = 'odoo.inheritance'
     _description = 'Odoo Inheritance'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char()
 
