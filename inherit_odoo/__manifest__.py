@@ -20,6 +20,7 @@
         'security/ir.model.access.csv',
         'wizards/wizard_view.xml',
         'views/views.xml',
+        'data/sequence.xml',
         'reports/sale_report_inherit.xml',
     ],
     

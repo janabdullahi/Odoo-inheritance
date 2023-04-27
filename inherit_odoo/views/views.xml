@@ -115,6 +115,7 @@
       <field name="arch" type="xml">
         <tree>
           <field name="state" invisible="1"/>
+          <field name="ref"/>
           <field name="employee_id"/>
         </tree>
       </field>
@@ -133,6 +134,10 @@
             <field name="state" widget="statusbar" statusbar_visible="draft,approve,executive_director,cancel"/>
           </header>
           <sheet>
+            <div class="text-muted">Reference</div>
+            <h5>
+              <field name="ref" readonly="1"/>
+            </h5>
             <group>
               <group string="Personal Inormation">
                 <field name="employee_id"/>
