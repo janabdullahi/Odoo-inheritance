@@ -29,6 +29,26 @@ class OdooInheritance(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char()
+    state = fields.Selection([
+        ('draft', 'Draft'),
+        ('executive_director', 'Executive Director'),
+        ('approve', 'Approved'),
+        ('cancel', 'Cancelled'),
+    ], tracking=True, required=True, copy=False, default='draft')
 
-    def button_action1(self):
-        pass
+    def set_as_draft(self):
+        for rec in self:
+            rec.state = 'draft'
+    
+    def director_approver(self):
+        for rec in self:
+            rec.state = 'executive_director'
+
+    def final_approver(self):
+        for rec in self:
+            rec.state = 'approve'
+
+    def cancel(self):
+        for rec in self:
+            rec.state = 'cancel' 
+   
