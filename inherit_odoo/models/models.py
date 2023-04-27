@@ -31,12 +31,18 @@ class OdooInheritance(models.Model):
     _order = "employee_id desc" 
     _rec_name = 'employee_id'
 
+    ref = fields.Char(string='Reference', default=lambda self: _('New'), copy=False)
     employee_id = fields.Many2one('hr.employee', string="Employee Name", required=True, readonly=True, states={'draft': [('readonly', False)]})
     last_name = fields.Char(string="Last Name", readonly=True, states={'draft': [('readonly', False)]})
     phone = fields.Char(readonly=True, states={'draft': [('readonly', False)]})
     company_id = fields.Many2one('res.company', string='Company', required=True, readonly=True, default=lambda self: self.env.company)
     department_id = fields.Many2one('hr.department', string='Department', related='employee_id.department_id',store=True)
     
+    @api.model
+    def create(self, values):
+        values['ref'] = self.env['ir.sequence'].next_by_code('odoo.inheritance') or _('New')
+        return super(OdooInheritance, self).create(values)
+
     state = fields.Selection([
         ('draft', 'Draft'),
         ('executive_director', 'Executive Director'),
