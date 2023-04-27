@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import Warning, UserError, ValidationError
 
 class SaleOrderInheriting(models.Model):
     _inherit = 'sale.order'
@@ -56,4 +57,16 @@ class OdooInheritance(models.Model):
     def cancel(self):
         for rec in self:
             rec.state = 'cancel' 
+    
+    def copy(self, default=None):
+        for rec in self:
+            if rec.state != 'draft':
+                raise ValidationError(_('You cannot duplicate request unless it is in draft state.'))
+            return super(OdooInheritance, self).copy(default=default)
+
+    def unlink(self):
+        for rec in self:
+            if rec.state != 'draft':
+                raise ValidationError(_('You cannot delete request unless it is in draft state.'))
+            super(OdooInheritance, rec).unlink()
    
