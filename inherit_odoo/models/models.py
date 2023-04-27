@@ -28,6 +28,8 @@ class OdooInheritance(models.Model):
     _name = 'odoo.inheritance'
     _description = 'Odoo Inheritance'
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = "employee_id desc" 
+    _rec_name = 'employee_id'
 
     employee_id = fields.Many2one('hr.employee', string="Employee Name", required=True, readonly=True, states={'draft': [('readonly', False)]})
     last_name = fields.Char(string="Last Name", readonly=True, states={'draft': [('readonly', False)]})
