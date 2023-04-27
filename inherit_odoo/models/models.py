@@ -28,3 +28,6 @@ class OdooInheritance(models.Model):
     _description = 'Odoo Inheritance'
 
     name = fields.Char()
+
+    def button_action1(self):
+        pass

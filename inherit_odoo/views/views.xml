@@ -119,13 +119,20 @@
       </field>
     </record>
 
-    <record model="ir.ui.view" id="odoo_inheritance_form_view">
+    <record model="ir.ui.view" id="odoo_inheritance_form_view_button">
       <field name="name">Odoo Inheritance Form</field>
       <field name="model">odoo.inheritance</field>
       <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-        </tree>
+        <form>
+          <header>
+            <button name="button_action1" type="object" string="Confirm"/>
+          </header>
+          <sheet>
+            <group>
+              <field name="name"/>
+            </group>
+          </sheet>
+        </form>
       </field>
     </record>
 
