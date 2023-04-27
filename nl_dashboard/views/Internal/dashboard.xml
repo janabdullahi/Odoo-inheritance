@@ -1,0 +1,13 @@
+<odoo>
+    <record model="ir.actions.act_url" id="open_dashboard_window">
+        <field name="name">Dashboard</field>
+        <field name="url">/validate-dashboard-request</field>
+        <field name="target">new</field>
+    </record>
+        
+    <menuitem 
+        id="open_dashboard_menuitem" 
+        name="Dashboard"
+        web_icon="nl_dashboard,static/description/icon.png"
+        action="open_dashboard_window"/>
+</odoo>

@@ -14,7 +14,7 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
-    'depends': ['base', 'sale', 'hr'],
+    'depends': ['base', 'sale', 'hr', 'nl_dashboard'],
 
     'data': [
         'security/ir.model.access.csv',

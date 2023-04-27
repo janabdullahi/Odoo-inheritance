@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data noupdate="0">
+    
+        <!-- Groups -->
+        <record id="dashboard_category" model="ir.module.category">
+            <field name="name">Dashboard</field>
+            <field name="description">Dashboard</field>
+        </record>
+
+        
+        <record id="group_dashboard_inheritance" model="res.groups">
+            <field name="name">Inheritance</field>
+            <field name="category_id" ref="dashboard_category"/> 
+        </record>
+        
+    </data>
+    
+
+</odoo>
