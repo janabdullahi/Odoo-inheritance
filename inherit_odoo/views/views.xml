@@ -159,6 +159,26 @@
       </field>
     </record>
 
+    <record model="ir.ui.view" id="form_search_view">
+      <field name="name">odoo.inheritance.search</field>
+      <field name="model">odoo.inheritance</field>
+      <field name="arch" type="xml">
+        <search>
+          <field name="employee_id"/>
+          <field name="ref"/>
+          <filter name="archived" string="Archived" domain="[('active', '=', False)]" />
+          <separator/>
+          <filter name="state" string="Draft" domain="[('state', '=', 'draft')]" />
+          <filter name="state" string="Executive Director" domain="[('state', '=', 'executive_director')]" />
+          <filter name="state" string="Approved" domain="[('state', '=', 'approve')]" />
+          <filter name="state" string="Cancelled" domain="[('state', '=', 'cancel')]" />
+          <group expand="0" string="Group By">
+            <filter name="department_id" string="Department" context="{'group_by': 'department_id'}" />
+          </group>
+        </search>
+      </field>
+    </record>
+
     <record id="odoo_action_view" model="ir.actions.act_window">
       <field name="name">Odoo Inheritance</field>
       <field name="res_model">odoo.inheritance</field>
