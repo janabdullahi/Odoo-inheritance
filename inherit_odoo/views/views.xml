@@ -132,6 +132,7 @@
             <button name="final_approver" string="Final Approve" type="object" states="executive_director"/>
             <button name="cancel" string="Cancel" type="object" class="oe_highlight" states="approve,executive_director"/>
             <field name="state" widget="statusbar" statusbar_visible="draft,approve,executive_director,cancel"/>
+            <button name="action_create_invoice" string="Create Invoice" type="object" class="btn-primary" attrs="{'invisible': [('state', 'in', ('draft', 'cancel'))]}"/>
           </header>
           <sheet>
             <div class="text-muted">Reference</div>
