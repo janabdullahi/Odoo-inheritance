@@ -39,7 +39,7 @@ class OdooInheritance(models.Model):
     department_id = fields.Many2one('hr.department', string='Department', related='employee_id.department_id',store=True)
     active = fields.Boolean(default=True)
     product_line_ids = fields.One2many(comodel_name='product.line', inverse_name='product_line_id', copy=True, readonly=True, states={'draft': [('readonly', False)]})
-    
+    invoice_id = fields.Many2one(comodel_name='account.move', copy=False)
     
     @api.model
     def create(self, values):
@@ -80,4 +80,27 @@ class OdooInheritance(models.Model):
             if rec.state != 'draft':
                 raise ValidationError(_('You cannot delete request unless it is in draft state.'))
             super(OdooInheritance, rec).unlink()
-   
+
+    def action_create_invoice(self):
+            for rec in self:
+                if rec.state != 'approve':
+                    raise UserError(f'You Cannot create invoice in this {rec.state} state.')
+                
+                if  rec.invoice_id:  
+                    raise UserError('Invoice already created') 
+
+                invoice_lines = [{
+                        'name': line.product_id.name,
+                        'product_id': line.product_id.id,
+                        'price_subtotal': line.price_subtotal
+                        } for line in rec.product_line_ids]
+
+                invoice_vals = {
+                    'partner_id':  rec.employee_id.id,
+                    'move_type': 'out_invoice',
+                    'invoice_line_ids': invoice_lines
+                }
+
+                invoice = rec.env['account.move'].sudo().create(invoice_vals)
+                rec.invoice_id = invoice.id
+                return rec.action_view_invoice()
