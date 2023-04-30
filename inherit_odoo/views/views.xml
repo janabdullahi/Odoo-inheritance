@@ -135,6 +135,18 @@
             <button name="action_create_invoice" string="Create Invoice" type="object" class="btn-primary" attrs="{'invisible': [('state', 'in', ('draft', 'cancel', 'executive_director'))]}"/>
           </header>
           <sheet>
+            <div class="oe_button_box" name="button_box">
+              <button name="action_view_invoice" type="object" class="oe_stat_button" icon="fa-pencil-square-o" >
+                <div class="o_stat_info">
+                  <span class="o_stat_value">
+                    <field name="invoice_count"/>
+                  </span>
+                  <span class="o_stat_text">
+                      Invoice
+                  </span>
+                </div>
+              </button>
+            </div>
             <div class="text-muted">Reference</div>
             <h5>
               <field name="ref" readonly="1"/>
