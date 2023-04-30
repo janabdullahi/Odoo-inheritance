@@ -62,13 +62,12 @@ class ValidateRequestToDashboard(http.Controller):
 
         values = {
             'filterby': self.get_filterby(filterby, from_date, to_date),
-            'total_today_sale': self._total_todays_sale(filterby, from_date, to_date),
-            # 'company_currency_id': request.env.company.currency_id,
+            'total_executive_director': self._total_executive_director(filterby, from_date, to_date),
             'page_name': 'inheritance',
         }
         return request.render("nl_dashboard.odoo_inheritance_dashboard", values)
     
-    def _total_todays_sale(self, filterby, from_date, to_date):
+    def _total_executive_director(self, filterby, from_date, to_date):
         request.env.cr.execute(f'''
         SELECT
             COUNT(employee_id) 
@@ -76,5 +75,7 @@ class ValidateRequestToDashboard(http.Controller):
             odoo_inheritance 
         WHERE 
             STATE = 'executive_director'
+        AND
+            {self.search_records(filterby, 'create_date::DATE', from_date, to_date)} 
         ''')
         return request.env.cr.fetchall()[0][0]

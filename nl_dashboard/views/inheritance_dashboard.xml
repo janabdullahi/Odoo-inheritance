@@ -24,7 +24,7 @@
                                                     </div>
                                                     <div class="ps-3">
                                                         <h6>
-                                                            <t t-out="total_today_sale or 0" />
+                                                            <t t-out="total_executive_director or 0" />
                                                         </h6>
                                                     </div>
                                                 </div>
@@ -32,7 +32,6 @@
                                         </div>
                                     </div>
                                 </div>
-
 
                             </div>
                         </div>
