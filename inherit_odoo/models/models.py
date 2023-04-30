@@ -40,6 +40,7 @@ class OdooInheritance(models.Model):
     active = fields.Boolean(default=True)
     product_line_ids = fields.One2many(comodel_name='product.line', inverse_name='product_line_id', copy=True, readonly=True, states={'draft': [('readonly', False)]})
     invoice_id = fields.Many2one(comodel_name='account.move', copy=False)
+    invoice_count  = fields.Integer(compute='_count_invoice')
     
     @api.model
     def create(self, values):
@@ -104,3 +105,21 @@ class OdooInheritance(models.Model):
                 invoice = rec.env['account.move'].sudo().create(invoice_vals)
                 rec.invoice_id = invoice.id
                 return rec.action_view_invoice()
+
+    @api.depends('invoice_id')
+    def _count_invoice(self):
+        for rec in self:
+            rec.invoice_count = len(rec.invoice_id)
+    
+    def action_view_invoice(self):
+        for rec in self:
+            if rec.invoice_id:
+                return {
+                    'name': 'Invoice',
+                    'view_mode': 'form',
+                    'res_model': 'account.move',
+                    'context': "{'move_type': 'out_invoice'}",
+                    'type': 'ir.actions.act_window',
+                    'res_id': rec.invoice_id.id,
+                }
+   
