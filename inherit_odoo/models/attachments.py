@@ -12,3 +12,4 @@ class Attachment(models.Model):
     date = fields.Date(default=datetime.today())
     document_file = fields.Binary(string=" ")
     active = fields.Boolean(default=True)
+    employee_id = fields.Many2one('odoo.inheritance')
