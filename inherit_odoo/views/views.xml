@@ -186,6 +186,12 @@
                   </tree>
                 </field>
               </page>
+              <page string="More Information">
+                <group>
+                  <field name="remarks" string="Remarks" placeholder="Please write more details..."/>
+                </group>
+              </page>
+
             </notebook>
 
           </sheet>
