@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Odoo Inheritance",
+    'name': 
+        " Odoo Inheritance, Wizard and more practice",
 
-    'summary': """
-        Odoo Inheritance""",
+    'summary':
+         """
+            Odoo Inheritance, Wizard and more practice
+        """,
 
     'description': """
         Odoo Inheritance
