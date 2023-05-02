@@ -42,6 +42,7 @@ class OdooInheritance(models.Model):
     invoice_id = fields.Many2one(comodel_name='account.move', copy=False)
     invoice_count  = fields.Integer(compute='_count_invoice')
     attachments_count = fields.Integer(compute='compute_attachments_count')
+    remarks = fields.Html()
 
     @api.model
     def create(self, values):
