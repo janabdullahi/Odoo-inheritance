@@ -41,7 +41,8 @@ class OdooInheritance(models.Model):
     product_line_ids = fields.One2many(comodel_name='product.line', inverse_name='product_line_id', copy=True, readonly=True, states={'draft': [('readonly', False)]})
     invoice_id = fields.Many2one(comodel_name='account.move', copy=False)
     invoice_count  = fields.Integer(compute='_count_invoice')
-    
+    attachments_count = fields.Integer(compute='compute_attachments_count')
+
     @api.model
     def create(self, values):
         values['ref'] = self.env['ir.sequence'].next_by_code('odoo.inheritance') or _('New')
@@ -122,4 +123,19 @@ class OdooInheritance(models.Model):
                     'type': 'ir.actions.act_window',
                     'res_id': rec.invoice_id.id,
                 }
+
+    def compute_attachments_count(self):
+        for rec in self:
+            rec.attachments_count = self.env['attachment.attachment'].search_count([('employee_id','=', self.id)])
+
+    def attachments_view_result(self): 
+        for request in self:
+            return {
+                'name': 'Document Type',
+                'view_mode': 'tree,form',
+                'res_model': 'attachment.attachment',   
+                'type': 'ir.actions.act_window',
+                'domain': [('employee_id', '=', self.id)],   
+                'context': {'default_employee_id': self.id},
+            }
    
