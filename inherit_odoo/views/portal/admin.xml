@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="admin" name="Admin Template">
+        <div class="content text-center">
+            <h3>
+                Admin Template
+            </h3>
+        </div>
+    </template>
+
+</odoo>

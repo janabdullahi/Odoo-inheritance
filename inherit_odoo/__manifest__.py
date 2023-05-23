@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Odoo Inheritance",
+    'name': 
+        " Odoo Inheritance, Wizard and more practice",
 
-    'summary': """
-        Odoo Inheritance""",
+    'summary':
+         """
+            Odoo Inheritance, Wizard and more practice
+        """,
 
     'description': """
         Odoo Inheritance
@@ -21,6 +24,7 @@
         'wizards/wizard_view.xml',
         'views/views.xml',
         'views/attachments.xml',
+        'views/portal/admin.xml',
         'data/sequence.xml',
         'reports/sale_report_inherit.xml',
     ],
