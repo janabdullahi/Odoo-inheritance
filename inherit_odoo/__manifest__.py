@@ -24,6 +24,7 @@
         'wizards/wizard_view.xml',
         'views/views.xml',
         'views/attachments.xml',
+        'views/portal/admin.xml',
         'data/sequence.xml',
         'reports/sale_report_inherit.xml',
     ],
